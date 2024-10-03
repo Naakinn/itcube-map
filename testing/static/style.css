@@ -2,14 +2,7 @@
 	padding-right: 0px;
 	padding-left: 0px;
 	border-radius: 50px;
-	width: 800px;
-	height:600px;
-}
-#carouselExample {
-	width: inherit;
-	height:inherit;
-}
-
-img {
-	border-radius: 50px;
+	display: flex;
+	flex-direction: row; 
+	justify-content: center; 
 }

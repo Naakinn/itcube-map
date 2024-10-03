@@ -15,25 +15,48 @@
 		crossorigin="anonymous"></script>
 
 	<div class="container">
-		<div id="carouselExample" class="carousel slide">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="static/images/cat.png"
-					class="d-block w-100" alt="image didn't loaded, sorry">
-				</div>
-				<div class="carousel-item">
-					<img src="static/images/meme.jpeg"
-					class="d-block w-100" alt="image didn't loaded, sorry">
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			Launch demo modal
+		</button>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="container1">
+							<div class="row">
+							<div class="col">	
+								<img src="static/images/cat.png" class="img-thumbnail">
+							</div>
+							<div class="col">
+								<form>
+									<div class="mb-3">
+										<label for="exampleInputPetName1" class="form-label">Your pet name</label>
+										<input type="text" class="form-control" id="exampleInputPetName1" aria-describedby="petNameHelp">
+										<div id="petNameHelp" class="form-text">We'll never share your's pet name with anyone else.</div>
+									</div>
+									<div class="mb-3">
+										<label for="exampleInputEmail1" class="form-label">Email address</label>
+										<input type="email" class="form-control" id="exampleInputEmail1">	
+									</div>
+									<div class="mb-3">
+										<label for="exampleInputPassword1" class="form-label">Password</label>
+										<input type="password" class="form-control" id="exampleInputPassword1">
+									</div>
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</form>
+							</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Next</span>
-			</button>
 		</div>
 	</div>
 	
