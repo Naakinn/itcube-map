@@ -1,36 +1,63 @@
 :root {
-    --base: #1e1e2e;    
+	--base: #1e1e2e;
 	--mauve: #cba6f7;
 	--overlay0: #6c7086;
-	--surface0: #313244; 
+	--surface0: #313244;
+	--text: #cdd6f4;
+	--subtext1: #bac2de;
+	--subtext0: #a6adc8;
+	--mantle: #181825;
 }
+
 #button {
-	color: var(--mauve); 
-	border-color: var(--mauve); 
+	color: var(--mauve);
+	border-color: var(--mauve);
 }
+
 #button:hover {
-	/* color: var(--mauve);  */
-	/* border-color: var(--mauve);  */
+	background-color: var(--surface0);
+}
+
+#submit {
+	color: var(--mauve);
+	border-color: var(--mauve);
+}
+
+#submit:hover {
 	background-color: var(--surface0);
 }
 
 body {
-	background: var(--base); 
+	background: var(--base);
 }
+
 .form-label {
-	color: var(--overlay0); 
+	color: var(--subtext1);
+}
+
+.form-text {
+	color: var(--subtext0); 
 }
 
 .form-control {
-	background-color: var(--surface0); 
-	border-color: var(--surface0); 
+	background-color: var(--mantle);
+	border-color: var(--surface0);
+	caret-color: var(--mauve);
+	color: var(--text);
 }
 
 .form-control:focus {
-	background-color: #9399b2; 
-	transition: .1s ease-in-out; 
-	border-color: var(--surface0); 
+	background-color: var(--mantle);
+	border-color: var(--surface0);
+	color: var(--text);
+	/* box-shadow: none !important; */
 }
+
+*:focus {
+	box-shadow: none !important;
+	
+}
+
 .container {
 	padding-right: 0px;
 	padding-left: 0px;
@@ -41,14 +68,17 @@ body {
 }
 
 .modal-content {
-	background: var(--base); 
+	background: var(--base);
 }
+
 #exampleModalLabel {
-	color: var(--mauve); 
+	color: var(--mauve);
 }
+
 .modal-header {
-	border-bottom: var(--bs-modal-header-border-width) solid var(--overlay0); 
+	border-bottom: var(--bs-modal-header-border-width) solid var(--overlay0);
 }
+
 #drop-area {
 	border: 2px dashed var(--overlay0);
 	border-radius: var(--bs-border-radius);
@@ -59,6 +89,7 @@ body {
 	color: var(--overlay0);
 	position: relative;
 	overflow: hidden;
+	background-color: var(--mantle);
 }
 
 #image {
