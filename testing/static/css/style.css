@@ -1,19 +1,62 @@
+:root {
+    --base: #1e1e2e;    
+	--mauve: #cba6f7;
+	--overlay0: #6c7086;
+	--surface0: #313244; 
+}
+#button {
+	color: var(--mauve); 
+	border-color: var(--mauve); 
+}
+#button:hover {
+	/* color: var(--mauve);  */
+	/* border-color: var(--mauve);  */
+	background-color: var(--surface0);
+}
+
+body {
+	background: var(--base); 
+}
+.form-label {
+	color: var(--overlay0); 
+}
+
+.form-control {
+	background-color: var(--surface0); 
+	border-color: var(--surface0); 
+}
+
+.form-control:focus {
+	background-color: #9399b2; 
+	transition: .1s ease-in-out; 
+	border-color: var(--surface0); 
+}
 .container {
 	padding-right: 0px;
 	padding-left: 0px;
 	display: flex;
-	flex-direction: row;
 	justify-content: center;
+	align-items: center;
+	height: 30em
 }
 
+.modal-content {
+	background: var(--base); 
+}
+#exampleModalLabel {
+	color: var(--mauve); 
+}
+.modal-header {
+	border-bottom: var(--bs-modal-header-border-width) solid var(--overlay0); 
+}
 #drop-area {
-	border: 2px dashed #cccccc;
+	border: 2px dashed var(--overlay0);
 	border-radius: var(--bs-border-radius);
 	width: inherit;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #cccccc;
+	color: var(--overlay0);
 	position: relative;
 	overflow: hidden;
 }
