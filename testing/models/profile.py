@@ -1,12 +1,11 @@
 from django.db import models
-from .employee import Employee 
+
+from .employee import Employee
 
 class Profile(models.Model): 
-    def __init__(self) -> None:
-        self.employee = models.OneToOneField(Employee, on_delete=models.CASCADE)
-        self.bio = models.TextField(); 
-        self.location = models.CharField(max_length=100)
+    employee = models.OneToOneField(Employee, on_delete=models.CASCADE, null=True)
+    bio = models.TextField()
+    location = models.CharField(max_length=50)
 
-    def __str__(self):
-            return f"PF {self.employee}"
-            
+    def __str__(self) -> str:
+         return f"PF {self.employee}"
