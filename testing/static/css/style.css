@@ -13,7 +13,10 @@
 	color: var(--mauve);
 	border-color: var(--mauve);
 }
-
+#button, 
+#searchForm {
+	margin: 15px;
+}
 #button:hover {
 	background-color: var(--surface0);
 }
@@ -64,7 +67,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 30em
+	height: 30em; 
+	flex-direction: column;
 }
 
 .modal-content {

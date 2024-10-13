@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Results: {{ token }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<style>
+		h1 {
+			color: #cba6f7
+		}
+		.container {
+			flex-direction: column;
+		}
+	</style>
+	<h1>{{ token }}</h1><br>
+	<ul style="color:#cba6f7">
+		{% for res in results %}
+			<li> {{ res }} </li><br>
+		{% endfor %}
+	</ul>
+</div>
+
+{% endblock %}

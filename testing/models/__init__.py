@@ -1,4 +1,2 @@
-from .employee import Employee
-from .department import Department
-from .project import Project
-from .profile import Profile
+from .book import Book
+from .author import Author
