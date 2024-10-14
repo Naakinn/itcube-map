@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.db.models.functions import Lower
 # from django.http import HttpResponse
 
-from .models import Book 
+from ..models import Book 
  
 def homePageView(request):
     return render(request, "index.html")

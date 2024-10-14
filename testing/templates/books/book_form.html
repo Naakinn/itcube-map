@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{% if object %}Edit{% else %}Create{% endif %} a book</h1>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<a href="{% url 'book_list_view' %}" class="btn btn-secondary">Back</a>
+{% endblock %}
