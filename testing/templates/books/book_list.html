@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>All books</h1>
+{% if messages %}{% for message in messages %}<div class="alert alert-info">{{ message }}</div> {% endfor %}{% endif %}
+<a href="{% url 'book_create_view' %}" class="btn btn-success">Add book</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Publish date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for books in book %}
+        <tr>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author.first_name }}</td>
+            <td>
+                <a href="{% url 'book-detail-view' employee.pk %}" class="btn btn-info">Просмотр</a>
+                <a href="{% url 'book-detail-view' employee.pk %}" class="btn btn-primary">Редактировать</a>
+                <button class="btn btn-danger" data-toggle="modal"
+                    data-target="#deleteModal{{ employee.pk }}">Удалить</button>
+                <div class="modal fade" id="deleteModal{{ employee.pk }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Подтвердите удаление</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">Вы уверены, что хотите удалить сотрудника {{ employee.first_name }}
+                                {{ employee.last_name }}?</div>
+                            <div class="modal-footer">
+                                <form action="{% url 'employee_delete' employee.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                    <button type="submit" class="btn btn-danger">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

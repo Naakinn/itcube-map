@@ -4,6 +4,6 @@ from .views import homePageView, searchView, resultsView
  
 urlpatterns = [
     path('', homePageView, name='home'),
-    path('search/', searchView, name='search-view'),
-    path('results/', resultsView, name='results-view')
+    path('search/', searchView, name='search_view'),
+    path('results/', resultsView, name='results_view')
 ]
