@@ -15,12 +15,10 @@
     <thead>
         <tr>
             <th>Name</th>
+            <a href="?sort_by=name{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}">Name(↑)</a> |
+            <a href="?sort_by=-name{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}">(↓)</a>
             <th>Author</th>
             <th>Publish date</th>
-            <th>
-                <a href="?sort_by=name{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}">Name(↑) </a> |
-                <a href="?sort_by=-name{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}">(↓)</a>
-            </th>
             <th>What to do</th>
         </tr>
     </thead>
@@ -28,27 +26,29 @@
         {% for book in books %}
         <tr>
             <td>{{ book.name }}</td>
-            <td>{{ book.author.first_name }}</td>
+            <td>{{ book.author.first_name }} {{ book.author.surname}}</td>
+            <td>{{ book.publish_date }}</td>
             <td>
                 <a href="{% url 'book_detail_view' book.pk %}" class="btn btn-info">Show</a>
-                <a href="{% url 'book_detail_view' book.pk %}" class="btn btn-primary">Edit</a>
-                <button class="btn btn-danger" data-toggle="modal"
-                    data-target="#deleteModal{{ book.pk }}">Delete</button>
-                <div class="modal fade" id="deleteModal{{ employee.pk }}" tabindex="-1" role="dialog"
+                <a href="{% url 'book_update_view' book.pk %}" class="btn btn-primary">Edit</a>
+
+                <button class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal{{ book.pk }}">Delete</button>
+
+                <div class="modal fade" id="deleteModal{{ book.pk }}" tabindex="-1" role="dialog"
                     aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="deleteModalLabel">Confirm</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">Are you sure to delete book{{ book.name }}
-                                by {{ book.author.first_name }}?</div>
+                            <div class="modal-body">Are you sure to delete "{{ book.name }}"
+                                by {{ book.author.first_name }} {{ book.author.surname }}?</div>
                             <div class="modal-footer">
                                 <form action="{% url 'book_delete_view' book.pk %}" method="post">
                                     {% csrf_token %}
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </div>
