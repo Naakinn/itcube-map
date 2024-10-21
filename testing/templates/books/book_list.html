@@ -5,15 +5,6 @@
 {% if messages %}{% for message in messages %}<div class="alert alert-info">{{ message }}</div> {% endfor %}{% endif %}
 <a href="{% url 'book_create_view' %}" class="btn btn-success">Add book</a>
 
-<!-- <form method="get" class="form-inline mb-3">
-    <div class="form-group">
-        <input type="text" name="name" placeholder="By name" class="form-control"   >
-        {{ request.GET.name }}
-    </div>
-    <button type="submit" class="btn btn-primary">Filter</button>
-    <a href="{% url 'book_list_view' %}" class="btn btn-secondary">Clear</a>
-</form> -->
-
 <form method="get" class="form-inline mb-3">
     <div class="form-group">
         <input type="radio" name="radioName" id="radioName1" value="name" checked>
@@ -33,15 +24,12 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Filter</button>
-    <a href="{% url 'book_list_view' %}" class="btn btn-secondary">Clear</a>
 </form>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 <table class="table">
     <thead>
         <tr>
             <th>Name</th>
-            <a href="?sort_by=name{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}">Name(↑)</a> |
-            <a href="?sort_by=-name{% if request.GET.name %}&name={{ request.GET.name }}{% endif %}">(↓)</a>
             <th>Author</th>
             <th>Publish date</th>
             <th>What to do</th>
@@ -66,14 +54,16 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="deleteModalLabel">Confirm</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">Are you sure to delete "{{ book.name }}"
                                 by {{ book.author.first_name }} {{ book.author.surname }}?</div>
                             <div class="modal-footer">
                                 <form action="{% url 'book_delete_view' book.pk %}" method="post">
                                     {% csrf_token %}
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </div>
