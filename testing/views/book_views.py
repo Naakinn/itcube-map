@@ -14,16 +14,12 @@ class BookListView(ListView):
     template_name = 'books/book_list.html' 
     context_object_name = 'books' 
     def get_queryset(self) -> QuerySet[Any]:
+
         queryset = super().get_queryset()
-        name = self.request.GET.get('name') 
-        if name: 
-            queryset = queryset.filter(name__icontains=name)
-        sort_by = self.request.GET.get('sort_by')
-        if sort_by == 'name': 
-            queryset = queryset.order_by('name')
-        elif sort_by == '-name': 
-            queryset = queryset.order_by('-name')
-        return queryset
+        name = self.request.GET.get('radioName') 
+        sort_by = self.request.GET.get('radioSortBy') 
+        order = ('' if not int(sort_by) else '-') + name if name and sort_by else 'name'
+        return queryset.order_by(order)
             
 
 class BookCreateView(CreateView): 
