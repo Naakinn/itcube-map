@@ -7,19 +7,19 @@
 
 <form method="get" class="form-inline mb-3">
     <div class="form-group">
-        <input type="radio" name="radioName" id="radioName1" value="name" checked>
+        <input type="radio" name="sort_by" id="radioName1" value="name" checked>
         <label for="radioName1">By name</label>
     </div>
     <div class="form-group">
-        <input type="radio" name="radioName" id="radioName2" value="publish_date">
+        <input type="radio" name="sort_by" id="radioName2" value="publish_date">
         <label for="radioName2">By date</label>
     </div>
     <div class="form-group">
-        <input type="radio" name="radioSortBy" id="radioSortBy1" value="0" checked>
+        <input type="radio" name="order" id="radioSortBy1" value="0" checked>
         <label for="radioSortBy1">Ascending</label>
     </div>
     <div class="form-group">
-        <input type="radio" name="radioSortBy" id="radioSortBy2" value="1">
+        <input type="radio" name="order" id="radioSortBy2" value="1">
         <label for="radioSortBy2">Descending</label>
     </div>
 
@@ -36,7 +36,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for book in books %}
+        {% for book in page_obj %}
         <tr>
             <td>{{ book.name }}</td>
             <td>{{ book.author.first_name }} {{ book.author.surname}}</td>
@@ -75,4 +75,23 @@
         {% endfor %}
     </tbody>
 </table>
+Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="btn btn-outline-primary btn-lg" href="?page={{ page_obj.previous_page_number }}">previous</a>
+        </li>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="btn btn-outline-primary btn-lg" href="?page={{ page_obj.next_page_number }}">next</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+</ul>
+</nav>
+
 {% endblock %}

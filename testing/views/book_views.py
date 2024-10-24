@@ -11,13 +11,14 @@ from ..forms import BookForm
 
 class BookListView(ListView): 
     model = Book 
+    paginate_by = 5
     template_name = 'books/book_list.html' 
     context_object_name = 'books' 
     def get_queryset(self) -> QuerySet[Any]:
 
         queryset = super().get_queryset()
-        name = self.request.GET.get('radioName') 
-        sort_by = self.request.GET.get('radioSortBy') 
+        name = self.request.GET.get('sort_by') 
+        sort_by = self.request.GET.get('order') 
         order = ('' if not int(sort_by) else '-') + name if name and sort_by else 'name'
         return queryset.order_by(order)
             
