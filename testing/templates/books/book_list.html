@@ -1,6 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if can_view_books %}
+    <p>Guest permissions</p>
+{% endif %}
+
+{% if request.user.is_superuser %}
+    <a href="{% url 'admin:index' %}">Admin panel</a>
+{% endif %}
+
+ <form action="{% url 'logout_view' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+
 <h1>All books</h1>
 {% if messages %}{% for message in messages %}<div class="alert alert-info">{{ message }}</div> {% endfor %}{% endif %}
 <a href="{% url 'book_create_view' %}" class="btn btn-success">Add book</a>
